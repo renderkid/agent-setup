@@ -1,0 +1,32 @@
+{
+  "name": "plugins",
+  "owner": {
+    "name": "Bhargava Mutyala"
+  },
+  "metadata": {
+    "description": "Mindtickle UI skills and Claude Code companion plugins for code-first AI tools.",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "mindtickle-ui",
+      "source": "mindtickle-ui",
+      "description": "Claude Code companion plugin for Mindtickle UI. Adds /mt-init and session-start discovery while the full guidance lives in the universal skill bundle.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Mindtickle"
+      },
+      "homepage": "https://ui.mindtickle.design",
+      "repository": "https://github.com/renderkid/agent-setup",
+      "category": "design-system",
+      "tags": [
+        "mindtickle",
+        "shadcn",
+        "base-ui",
+        "design-system",
+        "ui"
+      ]
+    }
+  ]
+}

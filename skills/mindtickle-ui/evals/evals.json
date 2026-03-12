@@ -1,0 +1,42 @@
+{
+  "skill_name": "mindtickle-ui",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a settings page using Mindtickle UI with a MainNav sidebar, PageHeader, and a form for name and email fields.",
+      "expected_output": "A React component tree using MainNav, PageHeader, FieldGroup, Field, semantic tokens, and @mindtickle installs.",
+      "files": [],
+      "expectations": [
+        "Uses MainNav for the sidebar instead of custom navigation markup",
+        "Uses PageHeader for the page title and actions",
+        "Uses FieldGroup and Field for form layout",
+        "Uses semantic tokens and variants instead of raw Tailwind colors",
+        "Installs components with the @mindtickle registry prefix"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Create a dialog for editing a profile using Mindtickle UI in a Base UI project. Include trigger, title, fields, and save/cancel actions.",
+      "expected_output": "A Dialog composition using render-based trigger composition, DialogTitle, and Field helpers.",
+      "files": [],
+      "expectations": [
+        "Uses render instead of asChild for the Dialog trigger",
+        "Includes DialogTitle for accessibility",
+        "Uses Field and Input components for form controls",
+        "Uses Button variants instead of manual styling"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Build a filter toolbar with a Select, ToggleGroup, and destructive reset action using Mindtickle UI.",
+      "expected_output": "A toolbar that uses Base UI Select items, correct ToggleGroup control patterns, and semantic destructive styling.",
+      "files": [],
+      "expectations": [
+        "Uses Select items instead of Radix placeholder-only composition",
+        "Keeps SelectItem inside SelectGroup",
+        "Uses ToggleGroup instead of manually toggled buttons",
+        "Uses destructive or destructive-muted tokens appropriately"
+      ]
+    }
+  ]
+}
