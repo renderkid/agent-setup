@@ -83,7 +83,7 @@ _Registry source is installed via the Mindtickle shadcn registry._
 ## Usage
 
 ```tsx
-import { MainNav } from "@/components/blocks/navigation/main-nav";
+import { MainNav } from "@/components/navigation/main-nav";
 ```
 
 ### Basic Usage
@@ -106,7 +106,7 @@ export function AppLayout() {
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MainNav } from "@/components/blocks/navigation/main-nav";
+import { MainNav } from "@/components/navigation/main-nav";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -124,7 +124,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
 ```tsx
 import { Link, useLocation } from "react-router-dom";
-import { MainNav } from "@/components/blocks/navigation/main-nav";
+import { MainNav } from "@/components/navigation/main-nav";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();

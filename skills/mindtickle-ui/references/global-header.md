@@ -52,7 +52,7 @@ _Registry source is installed via the Mindtickle shadcn registry._
 ## Usage
 
 ```tsx
-import { GlobalHeader } from "@/components/blocks/global-header";
+import { GlobalHeader } from "@/components/header/global-header";
 ```
 
 ```tsx
@@ -80,7 +80,7 @@ export function AppLayout() {
 Replace the default search placeholder with your own search component:
 
 ```tsx
-import { GlobalHeader } from "@/components/blocks/global-header";
+import { GlobalHeader } from "@/components/header/global-header";
 import { SearchBar } from "@/components/search-bar";
 
 export function AppHeader() {

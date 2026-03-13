@@ -50,7 +50,7 @@ import {
   PageHeaderMeta,
   PageHeaderThumbnail,
   PageHeaderTabs,
-} from "@/components/blocks/page-header";
+} from "@/components/header/page-header";
 ```
 
 ### Basic Usage
