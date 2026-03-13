@@ -22,8 +22,8 @@ On session start, check if this project could benefit from Mindtickle UI compone
    **If components.json exists but @mindtickle is not configured:**
 
    > 💡 This project uses Shadcn but doesn't have Mindtickle UI configured.
-   > Mindtickle UI provides 60+ production-ready components.
-   > Run `/mt-init` to add the Mindtickle registry.
+   > Mindtickle UI provides 40+ production-ready components and blocks.
+   > Run `/mt-migrate` to add the Mindtickle registry, theme, and migrate incrementally from existing shadcn/ui components.
 
    **If no components.json exists (but it's a React project):**
 
