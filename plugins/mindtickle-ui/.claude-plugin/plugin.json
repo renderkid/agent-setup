@@ -1,7 +1,7 @@
 {
   "name": "mindtickle-ui",
   "version": "1.0.0",
-  "description": "Claude Code companion plugin for Mindtickle UI. Adds /mt-init and session-start discovery while the full guidance lives in skills/mindtickle-ui.",
+  "description": "Claude Code companion plugin for Mindtickle UI. Adds /mt-init to set up new projects, /mt-migrate to upgrade from legacy tokens and APIs, and session-start discovery while the full guidance lives in skills/mindtickle-ui.",
   "author": {
     "name": "Mindtickle"
   },
