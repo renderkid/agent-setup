@@ -5,13 +5,5 @@
   "author": {
     "name": "Mindtickle"
   },
-  "homepage": "https://ui.mindtickle.design",
-  "repository": "https://github.com/renderkid/agent-setup",
-  "commands": [
-    "commands/init.md",
-    "commands/migrate.md"
-  ],
-  "hooks": [
-    "hooks/session-start.md"
-  ]
+  "homepage": "https://ui.mindtickle.design"
 }
