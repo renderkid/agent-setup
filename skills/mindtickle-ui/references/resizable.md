@@ -14,16 +14,16 @@ import {
 export function ResizableDemo() {
   return (
     <ResizablePanelGroup
-      direction="horizontal"
+      orientation="horizontal"
       className="min-h-[200px] max-w-md rounded-lg border"
     >
-      <ResizablePanel defaultSize={50}>
+      <ResizablePanel defaultSize="50%">
         <div className="flex h-full items-center justify-center p-6">
           <span className="font-semibold">One</span>
         </div>
       </ResizablePanel>
       <ResizableHandle />
-      <ResizablePanel defaultSize={50}>
+      <ResizablePanel defaultSize="50%">
         <div className="flex h-full items-center justify-center p-6">
           <span className="font-semibold">Two</span>
         </div>
@@ -45,7 +45,7 @@ npx shadcn@latest add @mindtickle/resizable
 - Install the following dependencies:
 
 ```bash
-npm install react-resizable-panels
+npm install react-resizable-panels@^4.8.0
 ```
 
 - Copy and paste the following code into your project.
@@ -65,12 +65,14 @@ import {
 ```
 
 ```tsx
-<ResizablePanelGroup direction="horizontal">
+<ResizablePanelGroup orientation="horizontal">
   <ResizablePanel>Panel One</ResizablePanel>
   <ResizableHandle />
   <ResizablePanel>Panel Two</ResizablePanel>
 </ResizablePanelGroup>
 ```
+
+> This component targets `react-resizable-panels` v4. The wrapper names stay the same, but `ResizablePanelGroup` now uses `orientation` instead of `direction`.
 
 ## API Reference
 
@@ -83,7 +85,7 @@ import {
 Provide `defaultSize` to panels for predictable initial layouts.
 
 ```tsx
-<ResizablePanel defaultSize={60}>Main content</ResizablePanel>
+<ResizablePanel defaultSize="60%">Main content</ResizablePanel>
 ```
 
 ### Use Min/Max Constraints
@@ -106,7 +108,8 @@ Use `withHandle` prop to show a visible drag handle.
 
 ### Direction Matters
 
-Choose `direction="horizontal"` or `direction="vertical"` based on your layout needs.
+Choose `orientation="horizontal"` or `orientation="vertical"` based on your
+layout needs.
 
 ## Related Components
 

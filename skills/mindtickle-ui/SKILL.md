@@ -47,6 +47,12 @@ npx shadcn@latest init --base base
 npx shadcn@latest add @mindtickle/theme @mindtickle/utils
 ```
 
+For a full install, use:
+
+```bash
+npx shadcn@latest add @mindtickle/all
+```
+
 ## Principles
 
 1. Use existing Mindtickle components before writing custom markup.
@@ -209,6 +215,9 @@ npx shadcn@latest search @mindtickle -q "navigation"
 
 # Preview a component without writing files
 npx shadcn@latest add @mindtickle/main-nav --dry-run
+
+# Install all Mindtickle UI components and blocks
+npx shadcn@latest add @mindtickle/all
 
 # Install a Mindtickle block
 npx shadcn@latest add @mindtickle/page-header

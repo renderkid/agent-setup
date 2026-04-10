@@ -220,6 +220,51 @@ export function PageHeaderWithBreadcrumb() {
 
 ```
 
+### Header Navigation Tabs
+
+Use the declarative `items` API for the common page-nav case. Drop down to custom `children` only when you need fully custom tab markup.
+
+```tsx
+"use client";
+
+import Link from "next/link";
+
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderTabs,
+  PageHeaderTitle,
+} from "@/components/blocks/header/page-header";
+
+const items = [
+  { label: "Assistants", href: "/docs/blocks/page-header", value: "assistants" },
+  { label: "Knowledge", href: "/docs/components/tabs", value: "knowledge" },
+  { label: "Skills", href: "/docs/components/badge", value: "skills" },
+  { label: "Agents", href: "/docs/components/button", value: "agents" },
+];
+
+export function PageHeaderWithTabs() {
+  return (
+    <div className="w-full border border-border bg-background">
+      <PageHeader>
+
+          <PageHeaderTitle>AI Studio</PageHeaderTitle>
+          <PageHeaderDescription>
+            Configure assistants, knowledge, skills, and agents.
+          </PageHeaderDescription>
+
+        <PageHeaderTabs
+          items={items}
+          LinkComponent={Link}
+          value="assistants"
+        />
+      </PageHeader>
+    </div>
+  );
+}
+
+```
+
 ### Module Header
 
 A complex header for content modules featuring thumbnail, status indicators, ratings, and navigation tabs.
@@ -470,7 +515,7 @@ The main heading element.
 
 | Prop        | Type          | Default | Description            |
 | ----------- | ------------- | ------- | ---------------------- |
-| `as`        | `ElementType` | `"h1"`  | Semantic heading level |
+| `as`        | `ElementType` | `"h2"`  | Semantic heading level |
 | `className` | `string`      | -       | Additional CSS classes |
 
 ### PageHeaderDescription
@@ -543,6 +588,36 @@ Container for metadata like badges, timestamps, and ratings. Hidden when `conden
 </PageHeaderMeta>
 ```
 
+### PageHeaderTabs
+
+Page-level navigation tabs. Use `items` for the common route-tab case, or pass custom `children` for advanced layouts.
+
+```tsx
+<PageHeaderTabs
+  value="assistants"
+  items={[
+    { label: "Assistants", href: "/ai-studio/assistants", value: "assistants" },
+    { label: "Knowledge", href: "/ai-studio/knowledge", value: "knowledge" },
+    { label: "Skills", href: "/ai-studio/skills", value: "skills" },
+  ]}
+  LinkComponent={Link}
+/>
+```
+
+| Prop            | Type                      | Default   | Description                                  |
+| --------------- | ------------------------- | --------- | -------------------------------------------- |
+| `items`         | `PageHeaderTabItem[]`     | -         | Declarative tab config                       |
+| `value`         | `string`                  | -         | Controlled active tab                        |
+| `defaultValue`  | `string`                  | first tab | Initial active tab for uncontrolled usage    |
+| `onValueChange` | `(value: string) => void` | -         | Change handler for interactive tabs          |
+| `LinkComponent` | `ComponentType`           | `<a>`     | Link renderer for route-based tabs           |
+| `tabsClassName` | `string`                  | -         | Extra classes for the internal `Tabs`        |
+| `listClassName` | `string`                  | -         | Extra classes for the internal `TabsList`    |
+| `children`      | `ReactNode`               | -         | Extra trailing content or full custom markup |
+
+`PageHeaderTabItem` supports `label`, `value`, `href`, `current`, `disabled`,
+and `className`.
+
 ### PageHeaderThumbnail
 
 Image or visual preview for the content. Hidden when `condensed` is true.
@@ -569,20 +644,6 @@ Image or visual preview for the content. Hidden when `condensed` is true.
 | `aspectRatio`    | `number`        | `1.5` (3:2) | Thumbnail aspect ratio   |
 | `ImageComponent` | `ComponentType` | `<img>`     | Custom image component   |
 | `children`       | `ReactNode`     | -           | Custom thumbnail content |
-
-### PageHeaderTabs
-
-Container for navigation tabs with bottom border styling.
-
-```tsx
-<PageHeaderTabs>
-  <a href="#build" className="border-b-2 border-accent">
-    Build
-  </a>
-  <a href="#settings">Settings</a>
-  <a href="#publish">Publish</a>
-</PageHeaderTabs>
-```
 
 ## Layout Patterns
 
@@ -623,7 +684,7 @@ Container for navigation tabs with bottom border styling.
 The Page Header follows WAI-ARIA best practices:
 
 - **Semantic HTML**: Uses `<header>` landmark element
-- **Heading hierarchy**: `PageHeaderTitle` uses `<h1>` by default, customizable with `as` prop
+- **Heading hierarchy**: `PageHeaderTitle` uses `<h2>` by default, customizable with `as` prop
 - **Breadcrumb navigation**: Uses `<nav>` with `aria-label="Breadcrumb"`
 - **Current page indicator**: Last breadcrumb item has `aria-current="page"`
 - **Focus management**: All interactive elements are keyboard accessible
@@ -641,9 +702,18 @@ The Page Header follows WAI-ARIA best practices:
 Pass your router's Link component for client-side navigation:
 
 ```tsx
-import { Link } from "next/link"; // or your router
+import Link from "next/link"; // or your router
 
 <PageHeaderBreadcrumb items={breadcrumbs} LinkComponent={Link} />;
+
+<PageHeaderTabs
+  items={[
+    { label: "Assistants", href: "/ai-studio/assistants", value: "assistants" },
+    { label: "Knowledge", href: "/ai-studio/knowledge", value: "knowledge" },
+  ]}
+  LinkComponent={Link}
+  value="assistants"
+/>;
 ```
 
 ### With Next.js Image

@@ -60,7 +60,7 @@ export function MainNavDemo() {
 
 ## Overview
 
-The Main Nav is a production-ready sidebar navigation component featuring smooth animations, collapsible states, hover cards for quick access, and built-in route configurations for admin and learner sites. It's designed to be framework-agnostic, working seamlessly with Next.js, React Router, or plain React applications.
+The Main Nav is a production-ready sidebar navigation component featuring smooth animations, collapsible states, hover cards for quick access, and built-in route configurations for admin and learner sites. It's designed to be framework-agnostic, working seamlessly with Next.js, React Router, or plain React applications, while still letting consumers tweak the shipped nav items without forking the component.
 
 ## Installation
 
@@ -395,21 +395,114 @@ export function MainNavControlledDemo() {
 
 ```
 
+### Customized Defaults
+
+Use the `customization` prop to hide built-in items and insert top-level or child items in specific positions.
+
+```tsx
+"use client";
+
+import { useState } from "react";
+
+import {
+  MainNav,
+  type MainNavCustomization,
+} from "@/components/blocks/navigation/main-nav";
+
+const customization: MainNavCustomization = {
+  hidden: ["ai-studio", "training.marketplace"],
+  inserts: [
+    {
+      item: {
+        id: "playbooks",
+        label: "Playbooks",
+        compactLabel: "Play",
+        href: "/playbooks",
+        iconName: "files",
+      },
+      position: { before: "analytics" },
+    },
+    {
+      parentId: "training",
+      item: {
+        id: "training.labs",
+        label: "Labs",
+        href: "/labs",
+      },
+      position: { after: "training.modules" },
+    },
+  ],
+};
+
+export function MainNavCustomizedDemo() {
+  const [currentPath, setCurrentPath] = useState("/training/labs");
+
+  const DemoLink = ({
+    href,
+    children,
+    className,
+  }: {
+    href: string;
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    // oxlint-disable-next-line no-html-link-for-pages
+    <a
+      className={className}
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        setCurrentPath(href);
+      }}
+    >
+      {children}
+    </a>
+  );
+
+  return (
+    <div className="relative flex h-[600px] w-full overflow-hidden rounded-lg bg-muted ring-1 ring-border">
+      <MainNav
+        currentPath={currentPath}
+        customization={customization}
+        LinkComponent={DemoLink}
+        site="admin"
+      />
+      <div className="flex flex-1 items-center justify-center p-8">
+        <div className="max-w-sm text-center">
+          <p className="font-medium text-muted-foreground text-sm">
+            Customized admin navigation
+          </p>
+          <p className="mt-2 text-muted-foreground text-xs">
+            Hides AI Studio, inserts Playbooks before Analytics, and adds Labs
+            under Training.
+          </p>
+          <code className="mt-3 block rounded bg-background px-3 py-1.5 font-mono text-sm">
+            {currentPath}
+          </code>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+```
+
 ## API Reference
 
 ### MainNavProps
 
-| Prop                      | Type                                       | Required | Default   | Description                                 |
-| ------------------------- | ------------------------------------------ | -------- | --------- | ------------------------------------------- |
-| `site`                    | `"admin" \| "learner"`                     | Yes      | -         | Determines which navigation list to display |
-| `currentPath`             | `string`                                   | No       | `""`      | Current URL path for active state detection |
-| `defaultCollapsed`        | `boolean`                                  | No       | `false`   | Initial collapsed state (uncontrolled)      |
-| `collapsed`               | `boolean`                                  | No       | -         | Controlled collapsed state                  |
-| `onCollapsedChange`       | `(collapsed: boolean) => void`             | No       | -         | Callback when collapsed state changes       |
-| `LinkComponent`           | `ComponentType<MainNavLinkComponentProps>` | No       | `<a>`     | Custom link component for routing           |
-| `showLabelsWhenCollapsed` | `boolean`                                  | No       | `true`    | Show text labels under icons when collapsed |
-| `className`               | `string`                                   | No       | -         | Additional CSS classes                      |
-| `footerSlot`              | `ReactNode`                                | No       | AI button | Custom footer content                       |
+| Prop                      | Type                                       | Required | Default   | Description                                   |
+| ------------------------- | ------------------------------------------ | -------- | --------- | --------------------------------------------- |
+| `site`                    | `"admin" \| "learner" \| "learner-new"`    | Yes      | -         | Determines which navigation list to display   |
+| `currentPath`             | `string`                                   | No       | `""`      | Current URL path for active state detection   |
+| `defaultCollapsed`        | `boolean`                                  | No       | `false`   | Initial collapsed state (uncontrolled)        |
+| `collapsed`               | `boolean`                                  | No       | -         | Controlled collapsed state                    |
+| `onCollapsedChange`       | `(collapsed: boolean) => void`             | No       | -         | Callback when collapsed state changes         |
+| `LinkComponent`           | `ComponentType<MainNavLinkComponentProps>` | No       | `<a>`     | Custom link component for routing             |
+| `customization`           | `MainNavCustomization`                     | No       | -         | Hides or inserts items on top of site defaults |
+| `showLabelsWhenCollapsed` | `boolean`                                  | No       | `true`    | Show text labels under icons when collapsed   |
+| `className`               | `string`                                   | No       | -         | Additional CSS classes                        |
+| `footerSlot`              | `ReactNode`                                | No       | -         | Custom footer content above the collapse toggle |
 
 ### MainNavLinkComponentProps
 
@@ -426,15 +519,43 @@ Props passed to the custom `LinkComponent`:
 
 Route configuration type exported from `routes.tsx`:
 
-| Property       | Type                   | Required | Description                       |
-| -------------- | ---------------------- | -------- | --------------------------------- |
-| `href`         | `string`               | Yes      | Route path                        |
-| `label`        | `string`               | Yes      | Display label                     |
-| `compactLabel` | `string`               | No       | Shorter label for collapsed state |
-| `icon`         | `ReactNode`            | Yes      | Icon for default state            |
-| `iconActive`   | `ReactNode`            | Yes      | Icon for active state             |
-| `children`     | `Array<{label, href}>` | No       | Submenu items                     |
-| `related`      | `Array<{label, href}>` | No       | Related pages (not rendered)      |
+| Property       | Type                       | Required | Description                                |
+| -------------- | -------------------------- | -------- | ------------------------------------------ |
+| `id`           | `string`                   | No       | Stable identifier used by customization ops |
+| `href`         | `string`                   | Yes      | Route path                                 |
+| `label`        | `string`                   | Yes      | Display label                              |
+| `compactLabel` | `string`                   | No       | Shorter label for collapsed state          |
+| `icon`         | `ReactNode`                | No       | Explicit icon for default state            |
+| `iconActive`   | `ReactNode`                | No       | Explicit icon for active state             |
+| `iconName`     | `Icon` name                | No       | Shorthand icon source for generated icons  |
+| `children`     | `MainNavChildItem[]`       | No       | Submenu items                              |
+| `related`      | `MainNavChildItem[]`       | No       | Related pages (not rendered)               |
+
+### MainNavChildItem
+
+Submenu item shape:
+
+| Property | Type     | Required | Description                                |
+| -------- | -------- | -------- | ------------------------------------------ |
+| `id`     | `string` | No       | Stable identifier used by customization ops |
+| `label`  | `string` | Yes      | Display label                               |
+| `href`   | `string` | Yes      | Relative child path (for example `"/labs"`) or a full resolved path |
+
+### MainNavCustomization
+
+Patch object applied to the built-in nav for the selected `site`.
+
+| Property | Type                        | Description |
+| -------- | --------------------------- | ----------- |
+| `hidden` | `string[]`                  | Item IDs to remove from the final nav tree |
+| `inserts` | `MainNavInsertOperation[]` | Items to insert at the top level or under a parent item |
+
+`MainNavInsertOperation` supports two forms:
+
+- Top-level insert: `{ item, position }`
+- Child insert: `{ parentId, item, position }`
+
+`position` supports `before`, `after`, or `index`.
 
 ## Features
 
@@ -510,32 +631,52 @@ The toggle button in the footer controls the collapsed state.
 
 ## Customization
 
-### Custom Routes
+### Customize Built-in Defaults
 
-Modify `routes.tsx` to customize navigation items:
+Use the `customization` prop for the common case where you want to keep the shipped site nav and tweak a few items:
 
 ```tsx
-// routes.tsx
-import { Home, Settings } from "lucide-react";
+const customization: MainNavCustomization = {
+  hidden: ["ai-studio", "training.marketplace"],
+  inserts: [
+    {
+      item: {
+        id: "playbooks",
+        label: "Playbooks",
+        href: "/playbooks",
+        iconName: "files",
+      },
+      position: { before: "analytics" },
+    },
+    {
+      parentId: "training",
+      item: {
+        id: "training.labs",
+        label: "Labs",
+        href: "/labs",
+      },
+      position: { after: "training.modules" },
+    },
+  ],
+};
 
-export const adminNavList: NavLinkProps[] = [
-  {
-    label: "Dashboard",
-    href: "/dashboard",
-    icon: <Home className="size-4" />,
-    iconActive: <Home className="size-4 fill-current" />,
-    children: [
-      { label: "Overview", href: "/overview" },
-      { label: "Analytics", href: "/analytics" },
-    ],
-  },
-  // Add more items...
-];
+<MainNav
+  site="admin"
+  currentPath={pathname}
+  customization={customization}
+  LinkComponent={Link}
+/>;
 ```
+
+The built-in route IDs live in the installed `routes.tsx` file. Use those IDs in `hidden`, `before`, `after`, and `parentId`.
+
+### Editing Installed Defaults
+
+If you need to permanently change the shipped defaults in your installed source, edit `routes.tsx` directly. Most consumers should prefer the `customization` prop because it keeps the defaults intact and makes local tweaks explicit.
 
 ### Custom Footer
 
-Replace the default AI button with custom content:
+Render custom content above the collapse toggle:
 
 ```tsx
 <MainNav
