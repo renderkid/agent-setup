@@ -220,7 +220,9 @@ export function IconColors() {
 
 Icons are named after Font Awesome identifiers. Current set:
 
-`cabinet-filing`, `chalkboard-user`, `chart-simple`, `door-open`, `file-chart-pie`, `gear`, `graduation-cap`, `house-blank`, `money-bill-trend-up`, `sidebar`, `users`, `users-rectangle`, `waveform-lines`.
+- Navigation and disclosure: `angle-down`, `angle-left`, `angle-right`, `angle-up`, `caret-down`, `caret-left`, `caret-right`, `caret-up`, `chevron-down`, `chevron-left`, `chevron-right`, `chevron-up`, `sidebar`.
+- Arrows and actions: `arrow-down`, `arrow-down-arrow-up`, `arrow-down-left`, `arrow-down-long`, `arrow-down-right`, `arrow-down-to-bracket`, `arrow-left`, `arrow-left-long`, `arrow-right`, `arrow-right-long`, `arrow-rotate-left`, `arrow-rotate-right`, `arrow-up`, `arrow-up-a-z`, `arrow-up-arrow-down`, `arrow-up-left`, `arrow-up-long`, `arrow-up-right`, `plus`, `plus-large`.
+- Product and assistant icons: `badge-percent`, `bell`, `cabinet-filing`, `chalkboard-user`, `chart-simple`, `circle-question`, `door-open`, `file-chart-pie`, `files`, `gear`, `graduation-cap`, `head-side-brain`, `house-blank`, `magnifying-glass`, `message-bot`, `money-bill-trend-up`, `sparkle`, `sparkles`, `user-group-simple`, `user-headset`, `users`, `users-rectangle`, `waveform-lines`.
 
 ## Adding new icons
 

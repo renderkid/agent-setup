@@ -227,8 +227,7 @@ Use the declarative `items` API for the common page-nav case. Drop down to custo
 ```tsx
 "use client";
 
-import Link from "next/link";
-
+import Link from "@/components/router-link";
 import {
   PageHeader,
   PageHeaderDescription,
