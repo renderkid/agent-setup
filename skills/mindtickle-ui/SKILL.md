@@ -11,7 +11,7 @@ UI primitives. Use it to install source components into consumer projects with
 
 > IMPORTANT: Prefer the consumer project's package runner for shadcn commands.
 > Examples below use `npx shadcn@latest`, but swap in `pnpm dlx` or `bunx`
-> when the project uses pnpm or bun.
+> when the project uses pnpm or bun or npm or yarn.
 
 ## Current Project Context
 
@@ -190,6 +190,7 @@ site, then processed for LLM-friendly local reading:
 - [table](./references/table.md)
 - [tabs](./references/tabs.md)
 - [textarea](./references/textarea.md)
+- [toast](./references/toast.md)
 - [toggle](./references/toggle.md)
 - [toggle-group](./references/toggle-group.md)
 - [tooltip](./references/tooltip.md)

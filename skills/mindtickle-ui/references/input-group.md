@@ -604,10 +604,8 @@ export function InputGroupTextareaActions() {
           <Paperclip />
         </InputGroupButton>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <InputGroupButton size="sm">
-              <ChevronDown />
-            </InputGroupButton>
+          <DropdownMenuTrigger render={<InputGroupButton size="sm" />}>
+            <ChevronDown />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem>Save Draft</DropdownMenuItem>
@@ -657,11 +655,9 @@ export function InputGroupDropdown() {
     <InputGroup>
       <InputGroupAddon align="inline-start">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <InputGroupButton size="sm">
-              All
-              <ChevronDown />
-            </InputGroupButton>
+          <DropdownMenuTrigger render={<InputGroupButton size="sm" />}>
+            All
+            <ChevronDown />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
             <DropdownMenuItem>All Categories</DropdownMenuItem>
@@ -710,13 +706,11 @@ export function InputGroupTooltip() {
         <InputGroupInput placeholder="Enter your password" type="password" />
         <InputGroupAddon align="inline-end">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton
-                aria-label="Password requirements"
-                size="icon-xs"
-              >
-                <HelpCircle />
-              </InputGroupButton>
+            <TooltipTrigger
+              aria-label="Password requirements"
+              render={<InputGroupButton size="icon-xs" />}
+            >
+              <HelpCircle />
             </TooltipTrigger>
             <TooltipContent>
               <p className="font-medium">Password requirements:</p>

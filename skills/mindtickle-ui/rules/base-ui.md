@@ -20,13 +20,9 @@ Use the `render` prop for trigger composition.
 <TooltipTrigger render={<Button size="icon" variant="ghost" />}>
   Hover for details
 </TooltipTrigger>
-```
 
-### Exception: Drawer uses Vaul `asChild`
-
-```tsx
-<DrawerTrigger asChild>
-  <Button variant="outline">Open drawer</Button>
+<DrawerTrigger render={<Button variant="outline" />}>
+  Open drawer
 </DrawerTrigger>
 ```
 
@@ -72,7 +68,7 @@ When `render` changes the underlying element to something other than a native
 | Popover      | `@base-ui/react` | `render`  | v0.1.0 |
 | HoverCard    | `@base-ui/react` | `render`  | v0.1.0 |
 | Combobox     | `@base-ui/react` | `render`  | v0.1.0 |
-| Drawer       | `vaul`           | `asChild` | v0.1.0 |
+| Drawer       | `@base-ui/react` | `render`  | v0.1.0 |
 
 ### Common Radix/shadcn mistakes (Base UI differences)
 
@@ -86,7 +82,7 @@ These are Radix UI / shadcn props that Base UI **silently ignores**. Using them 
 | `<Accordion defaultValue="item-1">`     | `<Accordion defaultValue={["item-1"]}>` (always an array) |
 | `<ToggleGroup type="multiple">`         | `<ToggleGroup multiple>`                                  |
 | `<ToggleGroup type="single">`           | `<ToggleGroup>` (single is the default)                   |
-| `<Trigger asChild><Button /></Trigger>` | `<Trigger render={<Button />}>` (except Drawer)           |
+| `<Trigger asChild><Button /></Trigger>` | `<Trigger render={<Button />}>`                           |
 
 ### Select: Base UI requires `items`
 

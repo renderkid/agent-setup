@@ -475,7 +475,7 @@ Displays a badge for status indicators, labels, and categorical information.
 
 | Prop | Type | Default | Description |
 | :--- | :--- | :------ | :---------- |
-| variant | `"default" | "surface" | "outline" | "soft"` | `"default"` | Controls the badge's visual style and emphasis level. Use default for emphasis, surface for bordered clarity, outline for lightweight labels, or soft for subtle tints. |
+| variant | `"default" | "solid" | "surface" | "outline" | "soft" | "secondary"` | `"default"` | Controls the badge's visual style and emphasis level. Use default for emphasis, surface for bordered clarity, outline for lightweight labels, or soft for subtle tints. |
 | color | `"accent" | "destructive" | "warning" | "success" | "info" | "muted"` | `"accent"` | Provides semantic meaning through color. Colors work across all variants - pair variant="soft" with color="success" for gentle positive signals. |
 | size | `"sm" | "md" | "lg"` | `"md"` | Adjusts padding and font size. Use sm for compact spaces like tables, md for standard UI elements, and lg for prominent labels. |
 | render | `React.ReactElement | ComponentRenderFn` | - | Applies badge styles to a custom element via the Base UI render prop. Turn a <button> or <a> into a badge while preserving interaction behavior. |

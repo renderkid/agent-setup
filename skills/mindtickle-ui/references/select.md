@@ -57,6 +57,7 @@ export function SelectDemo() {
 import {
   Select,
   SelectItem,
+  SelectLabel,
   SelectPopup,
   SelectTrigger,
   SelectValue,
@@ -72,6 +73,7 @@ const items = [
 ];
 
 <Select items={items}>
+  <SelectLabel>Framework</SelectLabel>
   <SelectTrigger>
     <SelectValue />
   </SelectTrigger>
@@ -541,6 +543,8 @@ Allows users to choose a single value from a list of options in a dropdown.
 | disabled | `boolean` | `false` | Disables the select when true, preventing user interaction. |
 | required | `boolean` | `false` | Marks the select as required for form validation. |
 
+### SelectLabel
+
 ### SelectTrigger
 
 The button that opens the select dropdown and displays the selected value.
@@ -604,17 +608,16 @@ The Select component follows accessibility best practices:
 
 ### Labeling
 
-- Always provide visible labels using the Label component
-- Connect labels to selects using proper `htmlFor` and `id` attributes
+- Always provide visible labels using `SelectLabel` or wrap selects in `Field`
 - Use descriptive labels that clearly indicate what is being selected
 - Provide helpful placeholder text in SelectValue
 
 ```tsx
 // Good: Proper labeling
-<Label htmlFor="country">Country</Label>
-<Select>
-  <SelectTrigger id="country">
-    <SelectValue placeholder="Select a country" />
+<Select items={countries}>
+  <SelectLabel>Country</SelectLabel>
+  <SelectTrigger>
+    <SelectValue />
   </SelectTrigger>
   <SelectContent>
     <SelectItem value="us">United States</SelectItem>
@@ -623,7 +626,7 @@ The Select component follows accessibility best practices:
 </Select>
 
 // Bad: Missing label
-<Select>
+<Select items={countries}>
   <SelectTrigger>
     <SelectValue placeholder="Country" />
   </SelectTrigger>
@@ -634,25 +637,25 @@ The Select component follows accessibility best practices:
 ### Option Organization
 
 - **Logical ordering**: Alphabetical, by frequency, or by category
-- **Group related options**: Use SelectGroup and SelectLabel for categorization
+- **Group related options**: Use SelectGroup and SelectGroupLabel for categorization
 - **Limit options**: Consider search functionality for lists > 10-15 items
 - **Separators**: Use SelectSeparator to divide distinct groups
 
 ```tsx
-<Select>
+<Select items={regions}>
   <SelectTrigger>
     <SelectValue placeholder="Select region" />
   </SelectTrigger>
   <SelectContent>
     <SelectGroup>
-      <SelectLabel>North America</SelectLabel>
+      <SelectGroupLabel>North America</SelectGroupLabel>
       <SelectItem value="us">United States</SelectItem>
       <SelectItem value="ca">Canada</SelectItem>
       <SelectItem value="mx">Mexico</SelectItem>
     </SelectGroup>
     <SelectSeparator />
     <SelectGroup>
-      <SelectLabel>Europe</SelectLabel>
+      <SelectGroupLabel>Europe</SelectGroupLabel>
       <SelectItem value="uk">United Kingdom</SelectItem>
       <SelectItem value="de">Germany</SelectItem>
       <SelectItem value="fr">France</SelectItem>

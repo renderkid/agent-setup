@@ -60,9 +60,7 @@ import {
 
 ```tsx
 <Tooltip>
-  <TooltipTrigger asChild>
-    <Button variant="outline">Hover</Button>
-  </TooltipTrigger>
+  <TooltipTrigger render={<Button variant="outline" />}>Hover</TooltipTrigger>
   <TooltipContent>
     <p>Add to library</p>
   </TooltipContent>
@@ -77,9 +75,7 @@ Control tooltip position using `side` and `align` props.
 
 ```tsx
 <Tooltip>
-  <TooltipTrigger asChild>
-    <Button variant="outline">Hover</Button>
-  </TooltipTrigger>
+  <TooltipTrigger render={<Button variant="outline" />}>Hover</TooltipTrigger>
   <TooltipContent side="top" align="end">
     <p>Add to library</p>
   </TooltipContent>
@@ -93,9 +89,7 @@ Use `TooltipProvider` to configure a delay before tooltips appear.
 ```tsx
 <TooltipProvider delay={300}>
   <Tooltip>
-    <TooltipTrigger asChild>
-      <Button variant="outline">Hover</Button>
-    </TooltipTrigger>
+    <TooltipTrigger render={<Button variant="outline" />}>Hover</TooltipTrigger>
     <TooltipContent>
       <p>This tooltip appears after 300ms</p>
     </TooltipContent>

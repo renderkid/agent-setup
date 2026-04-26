@@ -50,7 +50,7 @@ Prefer `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, and
 - `Separator` instead of `<hr>`
 - `Skeleton` for loading placeholders
 - `Badge` for inline status chips
-- `toast()` from `sonner` for toast notifications
+- `toastManager` for corner toasts and `anchoredToastManager` for inline confirmations
 
 ## Button loading state is composed
 

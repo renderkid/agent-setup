@@ -71,9 +71,7 @@ import {
 
 ```tsx
 <Popover>
-  <PopoverTrigger asChild>
-    <Button variant="outline">Open popover</Button>
-  </PopoverTrigger>
+  <PopoverTrigger render={<Button variant="outline" />}>Open popover</PopoverTrigger>
   <PopoverContent>
     <PopoverHeader>
       <PopoverTitle>Are you absolutely sure?</PopoverTitle>
@@ -91,9 +89,7 @@ Control where the popover appears relative to the trigger using `side` and `alig
 
 ```tsx
 <Popover>
-  <PopoverTrigger asChild>
-    <Button variant="outline">Open</Button>
-  </PopoverTrigger>
+  <PopoverTrigger render={<Button variant="outline" />}>Open</PopoverTrigger>
   <PopoverContent side="top" align="end">
     <PopoverHeader>
       <PopoverTitle>Popover Title</PopoverTitle>

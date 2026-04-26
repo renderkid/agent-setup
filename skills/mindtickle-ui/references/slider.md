@@ -36,11 +36,11 @@ _Registry source is installed via the Mindtickle shadcn registry._
 ## Usage
 
 ```tsx
-import { Slider } from "@/components/ui/slider";
+import { Slider, SliderLabel } from "@/components/ui/slider";
 ```
 
 ```tsx
-<Slider defaultValue={50} />
+<Slider defaultValue={50} aria-label="Volume" />
 ```
 
 ## Examples
@@ -52,12 +52,15 @@ Show the current value alongside the slider.
 ```tsx
 "use client";
 
-import { Slider, SliderValue } from "@/components/ui/slider";
+import { Slider, SliderLabel, SliderValue } from "@/components/ui/slider";
 
 export function SliderWithValue() {
   return (
     <Slider defaultValue={50}>
-      <SliderValue />
+      <div className="mb-2 flex items-center justify-between">
+        <SliderLabel>Volume</SliderLabel>
+        <SliderValue />
+      </div>
     </Slider>
   );
 }
@@ -126,10 +129,15 @@ Always label sliders to explain what value they control.
 
 ```tsx
 // ✅ Good - clear label
-<div>
-  <Label>Volume</Label>
+<Slider defaultValue={50}>
+  <SliderLabel>Volume</SliderLabel>
+</Slider>
+
+// ✅ Also good - external field label
+<Field>
+  <FieldLabel>Volume</FieldLabel>
   <Slider defaultValue={50} />
-</div>
+</Field>
 
 // ❌ Bad - no context
 <Slider defaultValue={50} />
@@ -160,7 +168,7 @@ Use `defaultValue` for uncontrolled sliders, or `value` with `onValueChange` for
 <Slider defaultValue={50} />;
 
 // Controlled
-const [value, setValue] = useState([50]);
+const [value, setValue] = useState(50);
 <Slider value={value} onValueChange={setValue} />;
 ```
 

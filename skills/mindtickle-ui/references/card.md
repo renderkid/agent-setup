@@ -246,10 +246,11 @@ export function CardHeaderAction() {
         </CardDescription>
         <CardAction>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button aria-label="More options" size="icon" variant="ghost">
-                <MoreVertical />
-              </Button>
+            <DropdownMenuTrigger
+              aria-label="More options"
+              render={<Button size="icon" variant="ghost" />}
+            >
+              <MoreVertical />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>Edit</DropdownMenuItem>
