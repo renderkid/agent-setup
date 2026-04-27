@@ -211,6 +211,48 @@ export function IconColors() {
 <Icon name="chart-simple" color="muted" />
 ```
 
+### Files and Content
+
+Use file and folder icons for content libraries, attachments, exports, and document-type previews.
+
+```tsx
+"use client";
+
+import { Icon } from "@/components/ui/icon";
+
+const fileIcons = [
+  "file",
+  "file-lines",
+  "file-pdf",
+  "file-doc",
+  "file-ppt",
+  "file-xls",
+  "file-csv",
+  "file-image",
+  "file-vector",
+  "file-zip",
+  "folder",
+  "folder-open",
+] as const;
+
+export function IconFiles() {
+  return (
+    <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+      {fileIcons.map((name) => (
+        <div
+          className="flex items-center gap-2 rounded-md border px-3 py-2 text-sm"
+          key={name}
+        >
+          <Icon name={name} variant="light" />
+          <span className="truncate">{name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+```
+
 ### Accessibility
 
 - **Decorative icons**: Omit the `label` prop. The icon will have `aria-hidden="true"`.
@@ -218,11 +260,84 @@ export function IconColors() {
 
 ## Available icons
 
-Icons are named after Font Awesome identifiers. Current set:
+Icons are named after Font Awesome identifiers.
 
-- Navigation and disclosure: `angle-down`, `angle-left`, `angle-right`, `angle-up`, `caret-down`, `caret-left`, `caret-right`, `caret-up`, `chevron-down`, `chevron-left`, `chevron-right`, `chevron-up`, `sidebar`.
-- Arrows and actions: `arrow-down`, `arrow-down-arrow-up`, `arrow-down-left`, `arrow-down-long`, `arrow-down-right`, `arrow-down-to-bracket`, `arrow-left`, `arrow-left-long`, `arrow-right`, `arrow-right-long`, `arrow-rotate-left`, `arrow-rotate-right`, `arrow-up`, `arrow-up-a-z`, `arrow-up-arrow-down`, `arrow-up-left`, `arrow-up-long`, `arrow-up-right`, `plus`, `plus-large`.
-- Product and assistant icons: `badge-percent`, `bell`, `cabinet-filing`, `chalkboard-user`, `chart-simple`, `circle-question`, `door-open`, `file-chart-pie`, `files`, `gear`, `graduation-cap`, `head-side-brain`, `house-blank`, `magnifying-glass`, `message-bot`, `money-bill-trend-up`, `sparkle`, `sparkles`, `user-group-simple`, `user-headset`, `users`, `users-rectangle`, `waveform-lines`.
+Current icon names:
+
+- `angle-down`
+- `angle-left`
+- `angle-right`
+- `angle-up`
+- `arrow-down`
+- `arrow-down-arrow-up`
+- `arrow-down-left`
+- `arrow-down-long`
+- `arrow-down-right`
+- `arrow-down-to-bracket`
+- `arrow-left`
+- `arrow-left-long`
+- `arrow-right`
+- `arrow-right-long`
+- `arrow-rotate-left`
+- `arrow-rotate-right`
+- `arrow-up`
+- `arrow-up-a-z`
+- `arrow-up-arrow-down`
+- `arrow-up-left`
+- `arrow-up-long`
+- `arrow-up-right`
+- `badge-percent`
+- `ballot-check`
+- `bell`
+- `cabinet-filing`
+- `caret-down`
+- `caret-left`
+- `caret-right`
+- `caret-up`
+- `chalkboard-user`
+- `chart-simple`
+- `chevron-down`
+- `chevron-left`
+- `chevron-right`
+- `chevron-up`
+- `circle-question`
+- `comment-lines`
+- `door-open`
+- `file`
+- `file-chart-pie`
+- `file-csv`
+- `file-doc`
+- `file-image`
+- `file-lines`
+- `file-pdf`
+- `file-ppt`
+- `file-vector`
+- `file-xls`
+- `file-zip`
+- `file-zipper`
+- `files`
+- `folder`
+- `folder-closed`
+- `folder-open`
+- `gear`
+- `graduation-cap`
+- `head-side-brain`
+- `house-blank`
+- `magnifying-glass`
+- `message-bot`
+- `money-bill-trend-up`
+- `plus`
+- `plus-large`
+- `sidebar`
+- `sparkle`
+- `sparkles`
+- `square-poll-vertical`
+- `user-group-simple`
+- `user-headset`
+- `users`
+- `users-rectangle`
+- `video`
+- `waveform-lines`
 
 ## Adding new icons
 
