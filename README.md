@@ -1,5 +1,18 @@
 # agent-setup
 
+> **Deprecated (November 2026).** This repo is no longer updated and is archived.
+> Its contents date from April 2026, so installing from it gives you an old copy of
+> the Mindtickle UI skill.
+>
+> Use the current setup instead:
+>
+> - **Claude Code at Mindtickle:** the `mindtickle-design` plugin, which includes the
+>   `mindtickle-ui` skill, is installed for you. There is nothing to add.
+> - **Other tools (Codex, Cursor and others):** follow the
+>   [Quick Start](https://ui.mindtickle.design/docs/quick-start).
+>
+> The instructions below are kept for reference only.
+
 Public distribution repo for Mindtickle UI AI integrations.
 
 ## Install the universal skill
